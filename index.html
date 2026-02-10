@@ -5,27 +5,19 @@
 <title>Valentine 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 :root { --yes-scale: 1; }
 
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
 body {
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   overflow: hidden;
-  overscroll-behavior: none;
-  touch-action: manipulation;
 }
 
-/* ===== PAGE BASE ===== */
+/* PAGE */
 .page {
   position: absolute;
   inset: 0;
@@ -40,10 +32,10 @@ body {
   transform: scale(1.1);
 }
 
-/* ===== PAGE 1 ===== */
+/* PAGE 1 */
 .container {
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   padding: 24px;
   border-radius: 20px;
   text-align: center;
@@ -51,7 +43,6 @@ body {
   max-width: 360px;
   color: #fff;
 }
-
 .photo {
   width: 100%;
   aspect-ratio: 1/1;
@@ -59,17 +50,9 @@ body {
   overflow: hidden;
   margin-bottom: 20px;
 }
-.photo img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+.photo img { width:100%; height:100%; object-fit:cover; }
 
-.buttons {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-}
+.buttons { display:flex; gap:16px; justify-content:center; }
 
 button {
   border:none;
@@ -85,12 +68,9 @@ button {
   color:white;
   transform:scale(var(--yes-scale));
 }
-#noBtn {
-  background:white;
-  color:#ff2f6e;
-}
+#noBtn { background:white; color:#ff2f6e; }
 
-/* ===== PAGE 2 ===== */
+/* PAGE 2 */
 .valentine {
   text-align:center;
   color:white;
@@ -104,10 +84,10 @@ button {
   padding:12px 32px;
 }
 
-/* ===== PAGE 3 ===== */
+/* PAGE 3 */
 .question {
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   padding: 28px;
   border-radius: 20px;
   text-align: center;
@@ -129,81 +109,13 @@ button {
   color:#ff2f6e;
 }
 
-/* ===== PAGE 4 ===== */
-.final {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.final-content {
-  max-width: 360px;
-  min-height: 100vh;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  z-index: 2;
-  animation: fadeUp 1.5s ease;
-}
-
-/* foto pinggir */
-.side-photo {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 16px;
-  overflow: hidden;
-  animation: float 4s ease-in-out infinite;
-}
-.side-photo img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.left1 { top: 15%; left: 10px; }
-.left2 { bottom: 20%; left: 20px; animation-delay: 1s; }
-.right1 { top: 20%; right: 10px; }
-.right2 { bottom: 25%; right: 20px; animation-delay: 1.5s; }
-
-/* ===== PAGE 5 ===== */
-.chocolate {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  animation: fadeUp 1.5s ease;
-}
-.choco-emoji {
-  font-size: 120px;
-  margin-bottom: 24px;
-  animation: float 3s ease-in-out infinite;
-}
-.repeat-btn {
-  background: white;
-  color: #ff2f6e;
-  padding: 14px 36px;
-  font-size: 16px;
-  border-radius: 999px;
-  border: none;
-}
-
-/* ===== ANIMATION ===== */
+/* ANIMATIONS */
 @keyframes fadeUp {
   from {opacity:0; transform:translateY(30px);}
   to {opacity:1; transform:translateY(0);}
 }
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
 
-/* FALLING LOVE */
+/* FALLING */
 .fall {
   position: fixed;
   top:-10%;
@@ -238,9 +150,10 @@ button {
   <div class="valentine">
     <h2>Untuk Kamu 💐</h2>
     <p>
-      Terima kasih sudah hadir  
-      dan bikin hariku lebih hangat.  
-      Semoga kita selalu saling memilih 💖
+      Terima kasih sudah hadir dan menjadi alasan  
+      aku tersenyum lebih sering dari biasanya.  
+      Semoga kita selalu saling memilih,  
+      setiap hari 💖
     </p>
     <button class="next-btn" id="toPage3">Lanjut ➜</button>
   </div>
@@ -250,6 +163,7 @@ button {
 <div class="page hidden" id="page3">
   <div class="question">
     <h2>Kamu sayang aku ga? 🥺💖</h2>
+
     <div class="answers">
       <button class="answer-yes" id="finalYes">Iya 😳💘</button>
       <button class="answer-no">Tidak 🙄</button>
@@ -258,53 +172,19 @@ button {
   </div>
 </div>
 
-<!-- PAGE 4 -->
-<div class="page hidden" id="page4">
-  <div class="final">
-    <div class="final-content">
-      <h2>Terima Kasih 🤍</h2>
-      <p>
-        Aku bersyukur punya kamu.  
-        Semoga hal kecil ini  
-        bisa bikin kamu senyum hari ini 💖
-      </p>
-    </div>
-
-    <div class="side-photo left1"><img src="foto1.jpg"></div>
-    <div class="side-photo left2"><img src="foto2.jpg"></div>
-    <div class="side-photo right1"><img src="foto3.jpg"></div>
-    <div class="side-photo right2"><img src="foto1.jpg"></div>
-  </div>
-</div>
-
-<!-- PAGE 5 -->
-<div class="page hidden" id="page5">
-  <div class="chocolate">
-    <div class="choco-emoji">🍫</div>
-    <button class="repeat-btn" id="repeatBtn">Ulang dari Awal 🔁</button>
-  </div>
-</div>
-
 <script>
 let scale = 1;
-let fallInterval;
-
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
 const page3 = document.getElementById("page3");
-const page4 = document.getElementById("page4");
-const page5 = document.getElementById("page5");
 
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-
-/* NO button membesarkan YES */
+/* PAGE 1 */
 noBtn.onclick = () => {
   scale += 0.25;
   document.documentElement.style.setProperty('--yes-scale', scale);
 };
-
-/* YES */
 yesBtn.onclick = () => {
   page1.classList.add("hidden");
   setTimeout(() => {
@@ -313,48 +193,34 @@ yesBtn.onclick = () => {
   }, 800);
 };
 
-/* Page 2 → 3 */
+/* PAGE 2 */
 document.getElementById("toPage3").onclick = () => {
   page2.classList.add("hidden");
   setTimeout(() => page3.classList.remove("hidden"), 800);
 };
 
-/* Tombol TIDAK kabur (ANDROID SAFE) */
-const moveBtn = (btn) => {
-  btn.style.transform = `translateX(${Math.random()*120-60}px)`;
-};
+/* PAGE 3 FORCE YES */
+const noAnswers = document.querySelectorAll(".answer-no");
+const finalYes = document.getElementById("finalYes");
 
-document.querySelectorAll(".answer-no").forEach(btn => {
-  btn.addEventListener("touchstart", () => moveBtn(btn));
-  btn.addEventListener("mouseenter", () => moveBtn(btn));
+noAnswers.forEach(btn => {
+  btn.onclick = () => {
+    finalYes.style.transform = "scale(1.4)";
+    finalYes.textContent = "IYA 😳💖";
+  };
+  btn.onmouseover = () => {
+    btn.style.transform = `translateX(${Math.random()*100-50}px)`;
+  };
 });
 
-/* Final YES */
-document.getElementById("finalYes").onclick = () => {
-  page3.classList.add("hidden");
-  setTimeout(() => page4.classList.remove("hidden"), 800);
+finalYes.onclick = () => {
+  alert("HEHE 😳💖 AKU JUGA SAYANG KAMU");
 };
 
-/* Page 4 → 5 */
-page4.onclick = () => {
-  stopFalling();
-  page4.classList.add("hidden");
-  setTimeout(() => page5.classList.remove("hidden"), 800);
-};
-
-/* Ulang */
-document.getElementById("repeatBtn").onclick = () => {
-  scale = 1;
-  document.documentElement.style.setProperty('--yes-scale', scale);
-  page5.classList.add("hidden");
-  setTimeout(() => page1.classList.remove("hidden"), 800);
-};
-
-/* Falling Love */
+/* FALLING */
 function startFalling() {
-  if (fallInterval) return;
   const items = ["💖","🌸","🌹","💕"];
-  fallInterval = setInterval(() => {
+  setInterval(() => {
     const fall = document.createElement("div");
     fall.className = "fall";
     fall.textContent = items[Math.floor(Math.random()*items.length)];
@@ -362,12 +228,7 @@ function startFalling() {
     fall.style.animationDuration = (4 + Math.random()*3) + "s";
     document.body.appendChild(fall);
     setTimeout(() => fall.remove(), 7000);
-  }, 350);
-}
-
-function stopFalling() {
-  clearInterval(fallInterval);
-  fallInterval = null;
+  }, 300);
 }
 </script>
 
