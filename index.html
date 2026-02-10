@@ -2,146 +2,217 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<title>Valentine 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine 💖</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+:root { --yes-scale: 1; }
+
+* {
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-body{
-  background:#ff5f8f;
-  overflow:hidden;
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
 }
 
-/* ================= PAGE SYSTEM ================= */
-.page{
-  position:absolute;
-  inset:0;
+/* ===== PAGE BASE ===== */
+.page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease, transform 1s ease;
+}
+.page.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.1);
+}
+
+/* ===== PAGE 1 ===== */
+.container {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 24px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 360px;
+  color: #fff;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.photo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.buttons {
   display:flex;
+  gap:16px;
   justify-content:center;
-  align-items:center;
-  transition:.8s ease;
 }
 
-.hidden{
-  opacity:0;
-  pointer-events:none;
-  transform:scale(.95);
-}
-
-/* ================= FLOWER BACKGROUND ================= */
-.flower{
-  position:fixed;
-  top:-30px;
-  pointer-events:none;
-  opacity:.85;
-  animation: fall linear infinite, sway ease-in-out infinite;
-}
-
-@keyframes fall{
-  to{
-    transform:translateY(110vh) translateX(60px);
-    opacity:0;
-  }
-}
-
-@keyframes sway{
-  0%{margin-left:0}
-  50%{margin-left:-40px}
-  100%{margin-left:0}
-}
-
-/* ================= BUTTON ================= */
-.btn{
-  padding:12px 32px;
-  border-radius:999px;
+button {
   border:none;
+  border-radius:999px;
+  padding:12px 24px;
   font-size:16px;
   cursor:pointer;
+  transition:all .3s ease;
 }
 
-.next-btn{
-  margin-top:28px;
+#yesBtn {
+  background:#ff2f6e;
+  color:white;
+  transform:scale(var(--yes-scale));
+}
+#noBtn {
   background:white;
   color:#ff2f6e;
 }
 
-/* ================= PAGE 1 ================= */
-.start{
+/* ===== PAGE 2 ===== */
+.valentine {
   text-align:center;
   color:white;
+  padding:24px;
+  animation: fadeUp 1.5s ease;
+}
+.next-btn {
+  margin-top:24px;
+  background:white;
+  color:#ff2f6e;
+  padding:12px 32px;
 }
 
-.start img{
-  width:220px;
-  aspect-ratio:1/1;
+/* ===== PAGE 3 ===== */
+.question {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+}
+.answers {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.answer-yes {
+  background:#ff2f6e;
+  color:white;
+  font-size:18px;
+}
+.answer-no {
+  background:white;
+  color:#ff2f6e;
+}
+
+/* ===== PAGE 4 ===== */
+.final {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.final-content {
+  max-width: 360px;
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  animation: fadeUp 1.5s ease;
+}
+
+/* foto pinggir */
+.side-photo {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  overflow: hidden;
+  animation: float 4s ease-in-out infinite;
+}
+.side-photo img {
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:20px;
-  margin:20px 0;
 }
+.left1 { top: 15%; left: 10px; }
+.left2 { bottom: 20%; left: 20px; animation-delay: 1s; }
+.right1 { top: 20%; right: 10px; }
+.right2 { bottom: 25%; right: 20px; animation-delay: 1.5s; }
 
-#yesBtn{
-  background:white;
-  color:#ff2f6e;
-  transition:.3s;
+/* ===== PAGE 5 ===== */
+.chocolate {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  animation: fadeUp 1.5s ease;
 }
-
-#noBtn{
-  background:rgba(255,255,255,.3);
-  color:white;
-}
-
-/* ================= PAGE 2 & 4 ================= */
-.text-box{
-  max-width:360px;
-  padding:20px;
-  text-align:center;
-  color:white;
-  line-height:1.6;
-  animation: fadeUp 1.2s ease;
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* ================= PAGE 3 ================= */
-.question{
-  text-align:center;
-  color:white;
-}
-
-.heartbeat{
-  animation: beat .6s infinite;
-}
-
-@keyframes beat{
-  0%{transform:scale(1)}
-  25%{transform:scale(1.05)}
-  40%{transform:scale(1)}
-  60%{transform:scale(1.08)}
-  100%{transform:scale(1)}
-}
-
-/* ================= PAGE 5 ================= */
-.chocolate{
-  text-align:center;
-  color:white;
-}
-
-.choco{
-  font-size:120px;
+.choco-emoji {
+  font-size: 120px;
+  margin-bottom: 24px;
   animation: float 3s ease-in-out infinite;
 }
+.repeat-btn {
+  background: white;
+  color: #ff2f6e;
+  padding: 14px 36px;
+  font-size: 16px;
+  border-radius: 999px;
+  border: none;
+}
 
-@keyframes float{
-  50%{transform:translateY(-15px)}
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(30px);}
+  to {opacity:1; transform:translateY(0);}
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* FALLING LOVE */
+.fall {
+  position: fixed;
+  top:-10%;
+  font-size:20px;
+  animation: fall linear infinite;
+  pointer-events:none;
+}
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(360deg); }
 }
 </style>
 </head>
@@ -150,23 +221,155 @@ body{
 
 <!-- PAGE 1 -->
 <div class="page" id="page1">
-  <div class="start">
-    <h1>Happy Valentine Day 💖</h1>
-    <img src="valentine.jpg">
-    <div>
-      <button class="btn" id="yesBtn">Yes</button>
-      <button class="btn" id="noBtn">No</button>
+  <div class="container">
+    <h1>Happy Valentine Day 💕</h1>
+    <div class="photo">
+      <img src="valentine.jpg">
+    </div>
+    <div class="buttons">
+      <button id="yesBtn">YES 💖</button>
+      <button id="noBtn">NO 😶</button>
     </div>
   </div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page hidden" id="page2">
-  <div class="text-box">
+  <div class="valentine">
+    <h2>Untuk Kamu 💐</h2>
     <p>
-      halo sayanggg, aku cuma mw ngucapin happy valentine hehe.
-      makasih ya udah hadir di hidupku, aku bersyukur banget
-      dapet kamu udah lucu imut cantik seksi lagi, aku doain kamu terus tau,
-      doa yg baik baik pasti, aku juga berdoa agar kita langgeng 
-      dan bisa sama
-      
+      Terima kasih sudah hadir  
+      dan bikin hariku lebih hangat.  
+      Semoga kita selalu saling memilih 💖
+    </p>
+    <button class="next-btn" id="toPage3">Lanjut ➜</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page hidden" id="page3">
+  <div class="question">
+    <h2>Kamu sayang aku ga? 🥺💖</h2>
+    <div class="answers">
+      <button class="answer-yes" id="finalYes">Iya 😳💘</button>
+      <button class="answer-no">Tidak 🙄</button>
+      <button class="answer-no">Tidak 😑</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page hidden" id="page4">
+  <div class="final">
+    <div class="final-content">
+      <h2>Terima Kasih 🤍</h2>
+      <p>
+        Aku bersyukur punya kamu.  
+        Semoga hal kecil ini  
+        bisa bikin kamu senyum hari ini 💖
+      </p>
+    </div>
+
+    <div class="side-photo left1"><img src="foto1.jpg"></div>
+    <div class="side-photo left2"><img src="foto2.jpg"></div>
+    <div class="side-photo right1"><img src="foto3.jpg"></div>
+    <div class="side-photo right2"><img src="foto1.jpg"></div>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page hidden" id="page5">
+  <div class="chocolate">
+    <div class="choco-emoji">🍫</div>
+    <button class="repeat-btn" id="repeatBtn">Ulang dari Awal 🔁</button>
+  </div>
+</div>
+
+<script>
+let scale = 1;
+let fallInterval;
+
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+const page3 = document.getElementById("page3");
+const page4 = document.getElementById("page4");
+const page5 = document.getElementById("page5");
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+/* NO button membesarkan YES */
+noBtn.onclick = () => {
+  scale += 0.25;
+  document.documentElement.style.setProperty('--yes-scale', scale);
+};
+
+/* YES */
+yesBtn.onclick = () => {
+  page1.classList.add("hidden");
+  setTimeout(() => {
+    page2.classList.remove("hidden");
+    startFalling();
+  }, 800);
+};
+
+/* Page 2 → 3 */
+document.getElementById("toPage3").onclick = () => {
+  page2.classList.add("hidden");
+  setTimeout(() => page3.classList.remove("hidden"), 800);
+};
+
+/* Tombol TIDAK kabur (ANDROID SAFE) */
+const moveBtn = (btn) => {
+  btn.style.transform = `translateX(${Math.random()*120-60}px)`;
+};
+
+document.querySelectorAll(".answer-no").forEach(btn => {
+  btn.addEventListener("touchstart", () => moveBtn(btn));
+  btn.addEventListener("mouseenter", () => moveBtn(btn));
+});
+
+/* Final YES */
+document.getElementById("finalYes").onclick = () => {
+  page3.classList.add("hidden");
+  setTimeout(() => page4.classList.remove("hidden"), 800);
+};
+
+/* Page 4 → 5 */
+page4.onclick = () => {
+  stopFalling();
+  page4.classList.add("hidden");
+  setTimeout(() => page5.classList.remove("hidden"), 800);
+};
+
+/* Ulang */
+document.getElementById("repeatBtn").onclick = () => {
+  scale = 1;
+  document.documentElement.style.setProperty('--yes-scale', scale);
+  page5.classList.add("hidden");
+  setTimeout(() => page1.classList.remove("hidden"), 800);
+};
+
+/* Falling Love */
+function startFalling() {
+  if (fallInterval) return;
+  const items = ["💖","🌸","🌹","💕"];
+  fallInterval = setInterval(() => {
+    const fall = document.createElement("div");
+    fall.className = "fall";
+    fall.textContent = items[Math.floor(Math.random()*items.length)];
+    fall.style.left = Math.random()*100 + "vw";
+    fall.style.animationDuration = (4 + Math.random()*3) + "s";
+    document.body.appendChild(fall);
+    setTimeout(() => fall.remove(), 7000);
+  }, 350);
+}
+
+function stopFalling() {
+  clearInterval(fallInterval);
+  fallInterval = null;
+}
+</script>
+
+</body>
+</html>
