@@ -2,183 +2,163 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Valentine 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine Sayangkuuu💖</title>
 
 <style>
-:root { --yes-scale: 1; }
-
-* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background: linear-gradient(180deg, #ff4d6d, #ff758f);
   overflow: hidden;
 }
 
-/* ===== PAGE BASE ===== */
 .page {
   position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity .8s ease, transform .8s ease;
 }
-.page.hidden {
+
+.hidden {
   opacity: 0;
   pointer-events: none;
-  transform: scale(1.1);
+  transform: scale(0.95);
 }
 
-/* ===== PAGE 1 ===== */
-.container {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  padding: 24px;
-  border-radius: 20px;
+/* LOVE FALL */
+.love {
+  position: fixed;
+  top: -20px;
+  font-size: 20px;
+  animation: fall linear infinite;
+  opacity: .8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* PAGE 1 */
+.start {
   text-align: center;
-  width: 90%;
-  max-width: 360px;
-  color: #fff;
+  color: white;
 }
-.photo {
-  width: 100%;
+
+.start img {
+  width: 220px;
   aspect-ratio: 1/1;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 20px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 20px 0;
 }
-.photo img { width:100%; height:100%; object-fit:cover; }
 
-.buttons { display:flex; gap:16px; justify-content:center; }
-
-button {
-  border:none;
-  border-radius:999px;
-  padding:12px 24px;
-  font-size:16px;
-  cursor:pointer;
-  transition:all .3s ease;
+.btn {
+  padding: 12px 30px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 8px;
 }
 
 #yesBtn {
-  background:#ff2f6e;
-  color:white;
-  transform:scale(var(--yes-scale));
-}
-#noBtn { background:white; color:#ff2f6e; }
-
-/* ===== PAGE 2 ===== */
-.valentine {
-  text-align:center;
-  color:white;
-  padding:24px;
-  animation: fadeUp 1.5s ease;
-}
-.next-btn {
-  margin-top:24px;
-  background:white;
-  color:#ff2f6e;
-  padding:12px 32px;
+  background: white;
+  color: #ff2f6e;
+  transition: transform .3s ease;
 }
 
-/* ===== PAGE 3 ===== */
-.question {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  padding: 28px;
-  border-radius: 20px;
-  text-align: center;
+#noBtn {
+  background: rgba(255,255,255,.3);
   color: white;
 }
-.answers {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.answer-yes {
-  background:#ff2f6e;
-  color:white;
-  font-size:18px;
-}
-.answer-no {
-  background:white;
-  color:#ff2f6e;
-}
 
-/* ===== PAGE 4 ===== */
-.final {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-  animation: fadeUp 1.5s ease;
-}
-
-.final h2 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-
-.final p {
-  font-size: 16px;
-  line-height: 1.7;
+/* PAGE 2 & 4 */
+.text-box {
   max-width: 360px;
-  margin: auto;
-}
-
-/* foto pinggir */
-.side-photo {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 16px;
-  overflow: hidden;
-  animation: float 4s ease-in-out infinite;
-}
-.side-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.left1 { top: 15%; left: 10px; }
-.left2 { bottom: 20%; left: 20px; animation-delay: 1s; }
-.right1 { top: 20%; right: 10px; }
-.right2 { bottom: 25%; right: 20px; animation-delay: 1.5s; }
-
-/* pernak pernik */
-.deco {
-  position: absolute;
-  font-size: 24px;
-  animation: float 3s ease-in-out infinite;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  line-height: 1.6;
+  animation: fadeUp 1.2s ease;
 }
 
 @keyframes fadeUp {
-  from {opacity:0; transform:translateY(30px);}
+  from {opacity:0; transform:translateY(20px);}
   to {opacity:1; transform:translateY(0);}
 }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.next-btn {
+  margin-top: 30px;
+  background: white;
+  color: #ff2f6e;
+  padding: 12px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
 }
 
-/* FALLING LOVE */
-.fall {
-  position: fixed;
-  top:-10%;
-  font-size:20px;
-  animation: fall linear infinite;
-  pointer-events:none;
+/* PAGE 3 */
+.question {
+  text-align: center;
+  color: white;
 }
-@keyframes fall {
-  to { transform: translateY(120vh) rotate(360deg); }
+
+.answer button {
+  margin: 10px;
+}
+
+/* PAGE 4 CENTER */
+.final-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 360px;
+  color: white;
+  padding: 20px;
+}
+
+/* PAGE 5 */
+.chocolate {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.choco-emoji {
+  font-size: 120px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-15px); }
+}
+
+.repeat-btn {
+  margin-top: 20px;
+  padding: 14px 40px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: #ff2f6e;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -187,22 +167,19 @@ button {
 
 <!-- PAGE 1 -->
 <div class="page" id="page1">
-  <div class="container">
-    <h1>Happy Valentine Day 💕</h1>
-    <div class="photo">
-      <img src="valentine.jpg">
-    </div>
-    <div class="buttons">
-      <button id="yesBtn">YES 💖</button>
-      <button id="noBtn">NO 😶</button>
+  <div class="start">
+    <h1>Happy Valentine Day 💖</h1>
+    <img src="valentine.jpg">
+    <div>
+      <button class="btn" id="yesBtn">Yes</button>
+      <button class="btn" id="noBtn">No</button>
     </div>
   </div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page hidden" id="page2">
-  <div class="valentine">
-    <h2>Untuk Kamu 💐</h2>
+  <div class="text-box">
     <p>
       halo sayanggg, aku cuma mw ngucapin happy valentine hehe.
       makasih ya udah hadir di hidupku, aku bersyukur banget
@@ -210,104 +187,96 @@ button {
       doa yg baik baik pasti, aku juga berdoa agar kita langgeng 
       dan bisa sama sama terus sampe ajal menjemputtt💖
     </p>
-    <button class="next-btn" id="toPage3">Lanjut ➜</button>
+    <button class="next-btn" id="toPage3">Lanjut 💕</button>
   </div>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page hidden" id="page3">
   <div class="question">
-    <h2>mw tanya dikit gapapa lah ya 
-     "kamu sayang aku ga"🥺💖</h2>
-    <div class="answers">
-      <button class="answer-yes" id="finalYes">Iya 😳💘</button>
-      <button class="answer-no">Tidak 🙄</button>
-      <button class="answer-no">Tidak 😑</button>
+    <h2>Kamu sayang aku ga? 😳</h2>
+    <div class="answer">
+      <button class="btn" id="iyaBtn">Iya</button>
+      <button class="btn" class="no">Tidak</button>
+      <button class="btn" class="no">Tidak</button>
     </div>
   </div>
 </div>
 
 <!-- PAGE 4 -->
-<div class="final">
+<div class="page hidden" id="page4">
   <div class="final-content">
-    <h2>Terima Kasih 🤍</h2>
     <p>
       maaf ya cuma bisa gini doang, ga kayak orang orang,
       ga kayak cowomu yg dulu, aslinya aku juga mw kayak yg lain 
       tapi mw gimana lagi, kita jauhan☹️, tapiii gapapaa jangan sedih
       walaupun kita jauhan aku tetep sayang banget sama kamuuu hehe.
     </p>
+    <button class="next-btn" id="toPage5">Lanjut 🤍</button>
+  </div>
+</div>
 
-    <!-- FOTO PINGGIR -->
-    <div class="side-photo left1"><img src="foto3.jpg"></div>
-    <div class="side-photo left2"><img src="foto2.jpg"></div>
-
-    <!-- DEKOR -->
-    <div class="deco" style="top:10%; left:45%;">💖</div>
-    <div class="deco" style="bottom:15%; left:30%;">🌸</div>
-    <div class="deco" style="top:25%; right:35%;">✨</div>
+<!-- PAGE 5 -->
+<div class="page hidden" id="page5">
+  <div class="chocolate">
+    <div class="choco-emoji">🍫</div>
+    <button class="repeat-btn" id="repeatBtn">Ulang dari Awal 🔁</button>
   </div>
 </div>
 
 <script>
-let scale = 1;
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
 const page3 = document.getElementById("page3");
 const page4 = document.getElementById("page4");
+const page5 = document.getElementById("page5");
 
-/* PAGE 1 */
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const iyaBtn = document.getElementById("iyaBtn");
+
+let scale = 1;
+
 noBtn.onclick = () => {
-  scale += 0.25;
-  document.documentElement.style.setProperty('--yes-scale', scale);
+  scale += 0.15;
+  yesBtn.style.transform = `scale(${scale})`;
 };
+
 yesBtn.onclick = () => {
   page1.classList.add("hidden");
-  setTimeout(() => {
-    page2.classList.remove("hidden");
-    startFalling();
-  }, 800);
+  setTimeout(() => page2.classList.remove("hidden"), 800);
 };
 
-/* PAGE 2 */
 document.getElementById("toPage3").onclick = () => {
   page2.classList.add("hidden");
   setTimeout(() => page3.classList.remove("hidden"), 800);
 };
 
-/* PAGE 3 */
-const noAnswers = document.querySelectorAll(".answer-no");
-const finalYes = document.getElementById("finalYes");
-
-noAnswers.forEach(btn => {
-  btn.onmouseover = () => {
-    btn.style.transform = `translateX(${Math.random()*100-50}px)`;
-  };
-  btn.onclick = () => {
-    finalYes.style.transform = "scale(1.4)";
-  };
-});
-
-finalYes.onclick = () => {
+iyaBtn.onclick = () => {
   page3.classList.add("hidden");
   setTimeout(() => page4.classList.remove("hidden"), 800);
 };
 
-/* FALLING */
-function startFalling() {
-  const items = ["💖","🌸","🌹","💕"];
-  setInterval(() => {
-    const fall = document.createElement("div");
-    fall.className = "fall";
-    fall.textContent = items[Math.floor(Math.random()*items.length)];
-    fall.style.left = Math.random()*100 + "vw";
-    fall.style.animationDuration = (4 + Math.random()*3) + "s";
-    document.body.appendChild(fall);
-    setTimeout(() => fall.remove(), 7000);
-  }, 300);
-}
+document.getElementById("toPage5").onclick = () => {
+  page4.classList.add("hidden");
+  setTimeout(() => page5.classList.remove("hidden"), 800);
+};
+
+document.getElementById("repeatBtn").onclick = () => {
+  page5.classList.add("hidden");
+  setTimeout(() => page1.classList.remove("hidden"), 800);
+};
+
+/* LOVE FALL */
+setInterval(() => {
+  const love = document.createElement("div");
+  love.className = "love";
+  love.innerHTML = "💖";
+  love.style.left = Math.random() * 100 + "vw";
+  love.style.animationDuration = 3 + Math.random() * 3 + "s";
+  document.body.appendChild(love);
+  setTimeout(() => love.remove(), 6000);
+}, 300);
 </script>
 
 </body>
