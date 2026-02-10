@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine Sayangggkuuu💖</title>
+<title>Happy Valentine 💖</title>
 
 <style>
 *{
@@ -18,7 +18,7 @@ body{
   overflow:hidden;
 }
 
-/* ===== PAGE SYSTEM ===== */
+/* ================= PAGE SYSTEM ================= */
 .page{
   position:absolute;
   inset:0;
@@ -34,12 +34,12 @@ body{
   transform:scale(.95);
 }
 
-/* ===== BACKGROUND FLOWER ===== */
+/* ================= FLOWER BACKGROUND ================= */
 .flower{
   position:fixed;
   top:-30px;
   pointer-events:none;
-  opacity:.8;
+  opacity:.85;
   animation: fall linear infinite, sway ease-in-out infinite;
 }
 
@@ -56,7 +56,7 @@ body{
   100%{margin-left:0}
 }
 
-/* ===== BUTTON ===== */
+/* ================= BUTTON ================= */
 .btn{
   padding:12px 32px;
   border-radius:999px;
@@ -66,12 +66,12 @@ body{
 }
 
 .next-btn{
-  margin-top:30px;
+  margin-top:28px;
   background:white;
   color:#ff2f6e;
 }
 
-/* ===== PAGE 1 ===== */
+/* ================= PAGE 1 ================= */
 .start{
   text-align:center;
   color:white;
@@ -96,22 +96,40 @@ body{
   color:white;
 }
 
-/* ===== PAGE 2 & 4 ===== */
+/* ================= PAGE 2 & 4 ================= */
 .text-box{
   max-width:360px;
   padding:20px;
   text-align:center;
   color:white;
   line-height:1.6;
+  animation: fadeUp 1.2s ease;
 }
 
-/* ===== PAGE 3 ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ================= PAGE 3 ================= */
 .question{
   text-align:center;
   color:white;
 }
 
-/* ===== PAGE 5 ===== */
+.heartbeat{
+  animation: beat .6s infinite;
+}
+
+@keyframes beat{
+  0%{transform:scale(1)}
+  25%{transform:scale(1.05)}
+  40%{transform:scale(1)}
+  60%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+/* ================= PAGE 5 ================= */
 .chocolate{
   text-align:center;
   color:white;
@@ -150,98 +168,5 @@ body{
       makasih ya udah hadir di hidupku, aku bersyukur banget
       dapet kamu udah lucu imut cantik seksi lagi, aku doain kamu terus tau,
       doa yg baik baik pasti, aku juga berdoa agar kita langgeng 
-      dan bisa sama sama terus sampe ajal menjemputtt💖
-    </p>
-    <button class="btn next-btn" id="to3">Lanjut 💕</button>
-  </div>
-</div>
-
-<!-- PAGE 3 -->
-<div class="page hidden" id="page3">
-  <div class="question">
-    <h2>Kamu sayang aku ga? 🥺💖</h2>
-    <div class="answers">
-      <button class="answer-yes" id="finalYes">Iya 😳💘</button>
-      <button class="answer-no">Tidak 🙄</button>
-      <button class="answer-no">Tidak 😑</button>
-    </div>
-  </div>
-</div>
-
-<!-- PAGE 4 -->
-<div class="page hidden" id="page4">
-  <div class="text-box">
-    <p>
-      maaf ya cuma bisa gini doang, ga kayak orang orang,
-      ga kayak cowomu yg dulu, aslinya aku juga mw kayak yg lain 
-      tapi mw gimana lagi, kita jauhan☹️, tapiii gapapaa jangan sedih
-      walaupun kita jauhan aku tetep sayang banget sama kamuuu hehe.
-    </p>
-    <button class="btn next-btn" id="to5">Lanjut 🤍</button>
-  </div>
-</div>
-
-<!-- PAGE 5 -->
-<div class="page hidden" id="page5">
-  <div class="chocolate">
-    <div class="choco">love youuu sayangg🍫</div>
-    <button class="btn next-btn" id="ulang">Ulang dari Awal 🔁</button>
-  </div>
-</div>
-
-<script>
-const page = i => document.getElementById("page"+i);
-
-let scale = 1;
-
-/* PAGE 1 */
-noBtn.onclick = ()=>{
-  scale += .15;
-  yesBtn.style.transform = `scale(${scale})`;
-};
-
-yesBtn.onclick = ()=>{
-  page(1).classList.add("hidden");
-  setTimeout(()=>page(2).classList.remove("hidden"),800);
-};
-
-/* PAGE 2 */
-to3.onclick = ()=>{
-  page(2).classList.add("hidden");
-  setTimeout(()=>page(3).classList.remove("hidden"),800);
-};
-
-/* PAGE 3 */
-iyaBtn.onclick = ()=>{
-  page(3).classList.add("hidden");
-  setTimeout(()=>page(4).classList.remove("hidden"),800);
-};
-
-/* PAGE 4 */
-to5.onclick = ()=>{
-  page(4).classList.add("hidden");
-  setTimeout(()=>page(5).classList.remove("hidden"),800);
-};
-
-/* PAGE 5 */
-ulang.onclick = ()=>{
-  page(5).classList.add("hidden");
-  setTimeout(()=>page(1).classList.remove("hidden"),800);
-};
-
-/* FLOWER */
-const flowers = ["🌸","🌺","🌷","🌼","💐"];
-setInterval(()=>{
-  const f = document.createElement("div");
-  f.className="flower";
-  f.innerHTML = flowers[Math.floor(Math.random()*flowers.length)];
-  f.style.left = Math.random()*100+"vw";
-  f.style.fontSize = 16+Math.random()*20+"px";
-  f.style.animationDuration = (6+Math.random()*6)+"s, 3s";
-  document.body.appendChild(f);
-  setTimeout(()=>f.remove(),12000);
-},400);
-</script>
-
-</body>
-</html>
+      dan bisa sama
+      
