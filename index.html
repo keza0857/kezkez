@@ -17,7 +17,7 @@ body {
   overflow: hidden;
 }
 
-/* PAGE */
+/* ===== PAGE BASE ===== */
 .page {
   position: absolute;
   inset: 0;
@@ -32,7 +32,7 @@ body {
   transform: scale(1.1);
 }
 
-/* PAGE 1 */
+/* ===== PAGE 1 ===== */
 .container {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
@@ -70,7 +70,7 @@ button {
 }
 #noBtn { background:white; color:#ff2f6e; }
 
-/* PAGE 2 */
+/* ===== PAGE 2 ===== */
 .valentine {
   text-align:center;
   color:white;
@@ -84,7 +84,7 @@ button {
   padding:12px 32px;
 }
 
-/* PAGE 3 */
+/* ===== PAGE 3 ===== */
 .question {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
@@ -109,13 +109,67 @@ button {
   color:#ff2f6e;
 }
 
-/* ANIMATIONS */
+/* ===== PAGE 4 ===== */
+.final {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeUp 1.5s ease;
+}
+
+.final h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.final p {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 360px;
+  margin: auto;
+}
+
+/* foto pinggir */
+.side-photo {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  overflow: hidden;
+  animation: float 4s ease-in-out infinite;
+}
+.side-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.left1 { top: 15%; left: 10px; }
+.left2 { bottom: 20%; left: 20px; animation-delay: 1s; }
+.right1 { top: 20%; right: 10px; }
+.right2 { bottom: 25%; right: 20px; animation-delay: 1.5s; }
+
+/* pernak pernik */
+.deco {
+  position: absolute;
+  font-size: 24px;
+  animation: float 3s ease-in-out infinite;
+}
+
 @keyframes fadeUp {
   from {opacity:0; transform:translateY(30px);}
   to {opacity:1; transform:translateY(0);}
 }
 
-/* FALLING */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* FALLING LOVE */
 .fall {
   position: fixed;
   top:-10%;
@@ -150,10 +204,11 @@ button {
   <div class="valentine">
     <h2>Untuk Kamu 💐</h2>
     <p>
-      Terima kasih sudah hadir dan menjadi alasan  
-      aku tersenyum lebih sering dari biasanya.  
-      Semoga kita selalu saling memilih,  
-      setiap hari 💖
+      halo sayanggg, aku cuma mw ngucapin happy valentine hehe.
+      makasih ya udah hadir di hidupku, aku bersyukur banget
+      dapet kamu udah lucu imut cantik seksi lagi, aku doain kamu terus tau,
+      doa yg baik baik pasti, aku juga berdoa agar kita langgeng 
+      dan bisa sama sama terus sampe ajal menjemputtt💖
     </p>
     <button class="next-btn" id="toPage3">Lanjut ➜</button>
   </div>
@@ -162,13 +217,37 @@ button {
 <!-- PAGE 3 -->
 <div class="page hidden" id="page3">
   <div class="question">
-    <h2>Kamu sayang aku ga? 🥺💖</h2>
-
+    <h2>mw tanya dikit gapapa lah ya 
+     "kamu sayang aku ga"🥺💖</h2>
     <div class="answers">
       <button class="answer-yes" id="finalYes">Iya 😳💘</button>
       <button class="answer-no">Tidak 🙄</button>
       <button class="answer-no">Tidak 😑</button>
     </div>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page hidden" id="page4">
+  <div class="final">
+    <h2>Terima Kasih 🤍</h2>
+    <p>
+      maaf ya cuma bisa gini doang, ga kayak orang orang,
+      ga kayak cowomu yg dulu, aslinya aku juga mw kayak yg lain 
+      tapi mw gimana lagi, kita jauhan☹️, tapiii gapapaa jangan sedih
+      walaupun kita jauhan aku tetep sayang banget sama kamuuu hehe.
+    </p>
+
+    <!-- FOTO PINGGIR -->
+    <div class="side-photo left1"><img src="foto1.jpg"></div>
+    <div class="side-photo left2"><img src="foto2.jpg"></div>
+    <div class="side-photo right1"><img src="foto3.jpg"></div>
+    <div class="side-photo right2"><img src="foto1.jpg"></div>
+
+    <!-- DEKOR -->
+    <div class="deco" style="top:10%; left:45%;">💖</div>
+    <div class="deco" style="bottom:15%; left:30%;">🌸</div>
+    <div class="deco" style="top:25%; right:35%;">✨</div>
   </div>
 </div>
 
@@ -179,6 +258,7 @@ const noBtn = document.getElementById("noBtn");
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
 const page3 = document.getElementById("page3");
+const page4 = document.getElementById("page4");
 
 /* PAGE 1 */
 noBtn.onclick = () => {
@@ -199,22 +279,22 @@ document.getElementById("toPage3").onclick = () => {
   setTimeout(() => page3.classList.remove("hidden"), 800);
 };
 
-/* PAGE 3 FORCE YES */
+/* PAGE 3 */
 const noAnswers = document.querySelectorAll(".answer-no");
 const finalYes = document.getElementById("finalYes");
 
 noAnswers.forEach(btn => {
-  btn.onclick = () => {
-    finalYes.style.transform = "scale(1.4)";
-    finalYes.textContent = "IYA 😳💖";
-  };
   btn.onmouseover = () => {
     btn.style.transform = `translateX(${Math.random()*100-50}px)`;
+  };
+  btn.onclick = () => {
+    finalYes.style.transform = "scale(1.4)";
   };
 });
 
 finalYes.onclick = () => {
-  alert("HEHE 😳💖 AKU JUGA SAYANG KAMU");
+  page3.classList.add("hidden");
+  setTimeout(() => page4.classList.remove("hidden"), 800);
 };
 
 /* FALLING */
