@@ -1,118 +1,236 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Valentine 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --yes-scale: 1;
-    }
+<style>
+:root { --yes-scale: 1; }
 
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  overflow: hidden;
+}
 
-    .container {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      padding: 24px;
-      border-radius: 20px;
-      text-align: center;
-      width: 90%;
-      max-width: 360px;
-      color: #fff;
-    }
+/* PAGE */
+.page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease, transform 1s ease;
+}
+.page.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.1);
+}
 
-    h1 {
-      margin-bottom: 16px;
-      font-size: 28px;
-    }
+/* PAGE 1 */
+.container {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 24px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 360px;
+  color: #fff;
+}
+.photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.photo img { width:100%; height:100%; object-fit:cover; }
 
-    .photo {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
+.buttons { display:flex; gap:16px; justify-content:center; }
 
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+button {
+  border:none;
+  border-radius:999px;
+  padding:12px 24px;
+  font-size:16px;
+  cursor:pointer;
+  transition:all .3s ease;
+}
 
-    .buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      align-items: center;
-    }
+#yesBtn {
+  background:#ff2f6e;
+  color:white;
+  transform:scale(var(--yes-scale));
+}
+#noBtn { background:white; color:#ff2f6e; }
 
-    button {
-      border: none;
-      border-radius: 999px;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+/* PAGE 2 */
+.valentine {
+  text-align:center;
+  color:white;
+  padding:24px;
+  animation: fadeUp 1.5s ease;
+}
+.next-btn {
+  margin-top:24px;
+  background:white;
+  color:#ff2f6e;
+  padding:12px 32px;
+}
 
-    #yesBtn {
-      background: #ff2f6e;
-      color: white;
-      transform: scale(var(--yes-scale));
-    }
+/* PAGE 3 */
+.question {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+}
+.answers {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.answer-yes {
+  background:#ff2f6e;
+  color:white;
+  font-size:18px;
+}
+.answer-no {
+  background:white;
+  color:#ff2f6e;
+}
 
-    #noBtn {
-      background: white;
-      color: #ff2f6e;
-    }
-  </style>
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(30px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* FALLING */
+.fall {
+  position: fixed;
+  top:-10%;
+  font-size:20px;
+  animation: fall linear infinite;
+  pointer-events:none;
+}
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(360deg); }
+}
+</style>
 </head>
 
 <body>
 
+<!-- PAGE 1 -->
+<div class="page" id="page1">
   <div class="container">
     <h1>Happy Valentine Day 💕</h1>
-
     <div class="photo">
-      <img src="valentine.jpg" alt="Valentine">
+      <img src="valentine.jpg">
     </div>
-
     <div class="buttons">
       <button id="yesBtn">YES 💖</button>
       <button id="noBtn">NO 😶</button>
     </div>
   </div>
+</div>
 
-  <script>
-    let scale = 1;
+<!-- PAGE 2 -->
+<div class="page hidden" id="page2">
+  <div class="valentine">
+    <h2>Untuk Kamu 💐</h2>
+    <p>
+      Terima kasih sudah hadir dan menjadi alasan  
+      aku tersenyum lebih sering dari biasanya.  
+      Semoga kita selalu saling memilih,  
+      setiap hari 💖
+    </p>
+    <button class="next-btn" id="toPage3">Lanjut ➜</button>
+  </div>
+</div>
 
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
+<!-- PAGE 3 -->
+<div class="page hidden" id="page3">
+  <div class="question">
+    <h2>Kamu sayang aku ga? 🥺💖</h2>
 
-    noBtn.onclick = () => {
-      scale += 0.25;
-      document.documentElement.style.setProperty('--yes-scale', scale);
-    };
+    <div class="answers">
+      <button class="answer-yes" id="finalYes">Iya 😳💘</button>
+      <button class="answer-no">Tidak 🙄</button>
+      <button class="answer-no">Tidak 😑</button>
+    </div>
+  </div>
+</div>
 
-    yesBtn.onclick = () => {
-      alert("YEAYYYY 💘💘💘");
-    };
-  </script>
+<script>
+let scale = 1;
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+const page3 = document.getElementById("page3");
+
+/* PAGE 1 */
+noBtn.onclick = () => {
+  scale += 0.25;
+  document.documentElement.style.setProperty('--yes-scale', scale);
+};
+yesBtn.onclick = () => {
+  page1.classList.add("hidden");
+  setTimeout(() => {
+    page2.classList.remove("hidden");
+    startFalling();
+  }, 800);
+};
+
+/* PAGE 2 */
+document.getElementById("toPage3").onclick = () => {
+  page2.classList.add("hidden");
+  setTimeout(() => page3.classList.remove("hidden"), 800);
+};
+
+/* PAGE 3 FORCE YES */
+const noAnswers = document.querySelectorAll(".answer-no");
+const finalYes = document.getElementById("finalYes");
+
+noAnswers.forEach(btn => {
+  btn.onclick = () => {
+    finalYes.style.transform = "scale(1.4)";
+    finalYes.textContent = "IYA 😳💖";
+  };
+  btn.onmouseover = () => {
+    btn.style.transform = `translateX(${Math.random()*100-50}px)`;
+  };
+});
+
+finalYes.onclick = () => {
+  alert("HEHE 😳💖 AKU JUGA SAYANG KAMU");
+};
+
+/* FALLING */
+function startFalling() {
+  const items = ["💖","🌸","🌹","💕"];
+  setInterval(() => {
+    const fall = document.createElement("div");
+    fall.className = "fall";
+    fall.textContent = items[Math.floor(Math.random()*items.length)];
+    fall.style.left = Math.random()*100 + "vw";
+    fall.style.animationDuration = (4 + Math.random()*3) + "s";
+    document.body.appendChild(fall);
+    setTimeout(() => fall.remove(), 7000);
+  }, 300);
+}
+</script>
 
 </body>
 </html>
