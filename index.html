@@ -13,24 +13,30 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* container supaya area jatuhnya lebih tengah */
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
 .text {
   position: absolute;
   white-space: nowrap;
-  font-size: 22px;
+  font-size: 40px; /* lebih gede */
   color: white;
-  opacity: 0.9;
-  text-shadow: 0 0 10px white, 0 0 20px pink;
-  transform: rotate(-20deg);
+  text-shadow: 0 0 15px white, 0 0 30px hotpink;
+  transform: rotate(-18deg);
   animation: fall linear forwards;
 }
 
 @keyframes fall {
   from {
-    transform: translateY(-100px) rotate(-20deg);
+    transform: translateY(-150px) rotate(-18deg);
     opacity: 1;
   }
   to {
-    transform: translateY(110vh) rotate(-20deg);
+    transform: translateY(110vh) rotate(-18deg);
     opacity: 0;
   }
 }
@@ -38,24 +44,32 @@ body {
 </head>
 <body>
 
+<div class="wrapper"></div>
+
 <script>
+const wrapper = document.querySelector(".wrapper");
+
 function createText() {
   const el = document.createElement("div");
   el.className = "text";
   el.innerHTML = "maaf sayangg, maafin aku donggg ❤️";
-  
-  el.style.left = Math.random() * window.innerWidth + "px";
-  el.style.fontSize = (18 + Math.random() * 15) + "px";
-  el.style.animationDuration = (4 + Math.random() * 4) + "s";
 
-  document.body.appendChild(el);
+  // bikin jatuhnya lebih ke area tengah (bukan full kiri-kanan)
+  const centerArea = window.innerWidth * 0.6;
+  const startX = (window.innerWidth - centerArea) / 2;
+
+  el.style.left = startX + Math.random() * centerArea + "px";
+  el.style.fontSize = (35 + Math.random() * 20) + "px";
+  el.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+  wrapper.appendChild(el);
 
   setTimeout(() => {
     el.remove();
-  }, 8000);
+  }, 7000);
 }
 
-setInterval(createText, 300);
+setInterval(createText, 250);
 </script>
 
 </body>
