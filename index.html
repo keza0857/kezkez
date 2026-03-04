@@ -2,61 +2,159 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Maaf Sayang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main dulu</title>
 <style>
-body {
-  margin: 0;
-  background: black;
-  overflow: hidden;
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:black;
+  color:white;
+  font-family:sans-serif;
+  text-align:center;
+}
+.box{
+  width:90%;
+}
+input{
+  padding:10px;
+  font-size:16px;
+  width:100px;
+  text-align:center;
+}
+button{
+  padding:10px 15px;
+  font-size:16px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+  <h2>Tebak angka 1 - 5</h2>
+  <p>Kalo menang baru bisa lanjut 😼</p>
+  <input type="number" id="guess" min="1" max="5">
+  <br><br>
+  <button onclick="check()">Coba</button>
+  <p id="result"></p>
+</div>
+
+<script>
+let number = Math.floor(Math.random() * 5) + 1;
+
+function check(){
+  let guess = document.getElementById("guess").value;
+  if(guess == number){
+    window.location.href = "maaf.html";
+  }else{
+    document.getElementById("result").innerText = "Salah. Coba lagi.";
+  }
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maaf</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:black;
+  overflow:hidden;
+}
+h1{
+  color:white;
+  font-style:italic;
+  font-size:6vw;
+  white-space:nowrap;
+  animation:slide 6s linear infinite;
+}
+@keyframes slide{
+  from{transform:translateX(-100%);}
+  to{transform:translateX(100%);}
+}
+</style>
+</head>
+<body>
+<h1>maaf ya sayang, aku beneran nyesel.</h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maaf</title>
+<style>
+body{
+  margin:0;
+  background:black;
+  color:white;
+  font-family:sans-serif;
+  overflow:hidden;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
+.wrapper{
+  position:relative;
+  height:100vh;
+  width:100%;
 }
 
-.row {
-  white-space: nowrap;
-  font-size: 24px;
-  color: white;
-  font-family: Arial, sans-serif;
+.text{
+  position:absolute;
+  bottom:-100%;
+  width:100%;
+  text-align:center;
+  padding:0 20px;
+  box-sizing:border-box;
+  animation:scrollUp 20s linear forwards;
+  font-size:5vw;
+  line-height:1.6;
 }
 
-.slide-right {
-  animation: rightMove 8s linear infinite;
-}
-
-.slide-left {
-  animation: leftMove 8s linear infinite;
-}
-
-@keyframes rightMove {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
-}
-
-@keyframes leftMove {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
+@keyframes scrollUp{
+  from{ bottom:-100%; }
+  to{ bottom:100%; }
 }
 </style>
 </head>
 <body>
 
-<div class="container" id="container"></div>
+<div class="wrapper">
+  <div class="text">
+    maaf ya semalem aku bikin semuanya jadi ga enak.<br><br>
 
-<script>
-const text = "maaf yaa sayanggg, aku janji bakal lebih dengerin dan kasih PISS kamu 💗 ";
-const container = document.getElementById("container");
+    aku nyesel udah nanya hal hal aneh yang sebenernya cuma lahir dari overthinking aku sendiri.<br><br>
 
-for (let i = 0; i < 30; i++) {
-  const row = document.createElement("div");
-  row.classList.add("row");
-  row.classList.add(i % 2 === 0 ? "slide-right" : "slide-left");
-  row.innerText = text.repeat(10);
-  container.appendChild(row);
-}
-</script>
+    waktu aku nanya kamu nyembunyiin sesuatu atau engga,
+    itu bukan karena kamu salah,
+    tapi karena aku kalah sama pikiran aku sendiri.<br><br>
+
+    aku sadar pertanyaan kayak gitu bisa bikin kamu capek,
+    bikin kamu ngerasa ga dipercaya,
+    dan bikin mood kamu hancur.<br><br>
+
+    padahal kamu ga ngelakuin apa apa.<br><br>
+
+    aku yang harusnya lebih dewasa,
+    lebih tenang,
+    dan lebih percaya sama kamu.<br><br>
+
+    maaf karena aku bikin hubungan kita kerasa berat cuma karena asumsi yang aku buat sendiri.<br><br>
+
+    aku bakal belajar buat ngontrol pikiran aku,
+    dan jadi orang yang lebih bisa dipercaya, bukan malah bikin kamu ragu.
+  </div>
+</div>
 
 </body>
 </html>
