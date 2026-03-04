@@ -3,104 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Main dulu</title>
+<title>Untuk Kamu</title>
 <style>
 body{
   margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   background:black;
   color:white;
   font-family:sans-serif;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
   text-align:center;
 }
-.box{
+
+#game{
   width:90%;
 }
+
 input{
   padding:10px;
   font-size:16px;
   width:100px;
   text-align:center;
 }
+
 button{
   padding:10px 15px;
   font-size:16px;
-}
-</style>
-</head>
-<body>
-<div class="box">
-  <h2>Tebak angka 1 - 5</h2>
-  <p>Kalo menang baru bisa lanjut 😼</p>
-  <input type="number" id="guess" min="1" max="5">
-  <br><br>
-  <button onclick="check()">Coba</button>
-  <p id="result"></p>
-</div>
-
-<script>
-let number = Math.floor(Math.random() * 5) + 1;
-
-function check(){
-  let guess = document.getElementById("guess").value;
-  if(guess == number){
-    window.location.href = "maaf.html";
-  }else{
-    document.getElementById("result").innerText = "Salah. Coba lagi.";
-  }
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maaf</title>
-<style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:black;
-  overflow:hidden;
-}
-h1{
-  color:white;
-  font-style:italic;
-  font-size:6vw;
-  white-space:nowrap;
-  animation:slide 6s linear infinite;
-}
-@keyframes slide{
-  from{transform:translateX(-100%);}
-  to{transform:translateX(100%);}
-}
-</style>
-</head>
-<body>
-<h1>maaf ya sayang, aku beneran nyesel.</h1>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maaf</title>
-<style>
-body{
-  margin:0;
-  background:black;
-  color:white;
-  font-family:sans-serif;
-  overflow:hidden;
+  margin-top:10px;
+  cursor:pointer;
 }
 
 .wrapper{
@@ -113,10 +46,9 @@ body{
   position:absolute;
   bottom:-100%;
   width:100%;
-  text-align:center;
   padding:0 20px;
   box-sizing:border-box;
-  animation:scrollUp 20s linear forwards;
+  animation:scrollUp 25s linear forwards;
   font-size:5vw;
   line-height:1.6;
 }
@@ -129,25 +61,54 @@ body{
 </head>
 <body>
 
-<div class="wrapper">
-  <div class="text">
-    maaf ya semalem aku bikin semuanya jadi ga enak.<br><br>
-    aku nyesel udah nanya hal hal aneh yang sebenernya cuma lahir dari overthinking aku sendiri.<br><br>
-    waktu aku nanya kamu nyembunyiin sesuatu atau engga,
-    itu bukan karena kamu salah,
-    tapi karena aku kalah sama pikiran aku sendiri.<br><br>
-    aku sadar pertanyaan kayak gitu bisa bikin kamu capek,
-    bikin kamu ngerasa ga dipercaya,
-    dan bikin mood kamu hancur.<br><br>
-    padahal kamu ga ngelakuin apa apa.<br><br>
-    aku yang harusnya lebih dewasa,
-    lebih tenang,
-    dan lebih percaya sama kamu.<br><br>
-    maaf karena aku bikin hubungan kita kerasa berat cuma karena asumsi yang aku buat sendiri.<br><br>
-    aku bakal belajar buat ngontrol pikiran aku,
-    dan jadi orang yang lebih bisa dipercaya, bukan malah bikin kamu ragu.
-  </div>
+<div id="game">
+  <h2>Tebak angka 1 - 5</h2>
+  <p>Kalo bener baru bisa lanjut</p>
+  <input type="number" id="guess" min="1" max="5">
+  <br>
+  <button onclick="check()">Coba</button>
+  <p id="result"></p>
 </div>
+
+<script>
+let number = Math.floor(Math.random() * 5) + 1;
+
+function check(){
+  let guess = document.getElementById("guess").value;
+  if(guess == number){
+    document.body.innerHTML = `
+      <div class="wrapper">
+        <div class="text">
+          maaf ya semalem aku bikin semuanya jadi ga enak.<br><br>
+
+          aku nyesel udah nanya hal hal aneh yang sebenernya cuma lahir dari overthinking aku sendiri.<br><br>
+
+          waktu aku nanya kamu nyembunyiin sesuatu atau engga,
+          itu bukan karena kamu salah,
+          tapi karena aku kalah sama pikiran aku sendiri.<br><br>
+
+          aku sadar pertanyaan kayak gitu bisa bikin kamu capek,
+          bikin kamu ngerasa ga dipercaya,
+          dan bikin mood kamu jelek.<br><br>
+
+          padahal kamu ga ngelakuin apa apa.<br><br>
+
+          aku yang harusnya lebih dewasa,
+          lebih tenang,
+          dan lebih percaya sama kamu.<br><br>
+
+          maaf karena aku bikin hubungan kita berat cuma karena asumsi aku sendiri.<br><br>
+
+          aku bakal belajar buat ngontrol pikiran aku
+          dan jadi orang yang lebih baik buat kamu.
+        </div>
+      </div>
+    `;
+  }else{
+    document.getElementById("result").innerText = "Salah. Coba lagi.";
+  }
+}
+</script>
 
 </body>
 </html>
